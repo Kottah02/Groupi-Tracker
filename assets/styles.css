@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #333333; /* Fond gris foncé */
+    color: white; /* Texte en blanc pour contraster avec le fond sombre */
+}
+
+header {
+    background-color: #222222; /* En-tête légèrement plus foncé */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav {
+    margin: 20px 0;
+    text-align: center;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white; /* Liens en blanc */
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #007BFF; /* Couleur bleue au survol des liens */
+}
+
+.content {
+    text-align: center;
+    padding: 50px;
+}
+
+footer {
+    background-color: #222222; /* Pied de page légèrement plus foncé */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
