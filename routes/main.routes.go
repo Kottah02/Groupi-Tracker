@@ -10,10 +10,11 @@ import (
 func Init() {
 
 	acceuilRouter()
-
 	aboutRouter()
-
 	connectionRouter()
+	carteRouter()
+	deckRouter()
+	articleRouter()
 
 	//Permet de réduperai tout les fichier static type css,img,js,music.
 	fs := http.FileServer(http.Dir("./assets"))
