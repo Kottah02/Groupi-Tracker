@@ -1,45 +1,62 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #333333; /* Fond gris foncé */
-    color: white; /* Texte en blanc pour contraster avec le fond sombre */
+    font-family: Arial, sans-serif;
 }
 
 header {
-    background-color: #222222; /* En-tête légèrement plus foncé */
+    background-color: #0a0a0a;
     color: white;
-    padding: 15px 0;
-    text-align: center;
+    padding: 10px 20px;
 }
 
 nav {
-    margin: 20px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: white; /* Liens en blanc */
-    font-size: 18px;
+.logo img {
+    height: 30px; /* Ajustez la hauteur du logo selon l'image */
+    width: auto;
 }
 
-nav a:hover {
-    color: #007BFF; /* Couleur bleue au survol des liens */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    flex-grow: 1;
 }
 
-.content {
-    text-align: center;
-    padding: 50px;
+.nav-links li {
+    margin: 0 15px; /* Ajustez l'espacement entre les liens */
 }
 
-footer {
-    background-color: #222222; /* Pied de page légèrement plus foncé */
+.nav-links a {
     color: white;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
+    text-decoration: none;
+    padding: 5px 10px;
+    font-size: 16px; /* Ajustez la taille de la police selon l'image */
+    font-weight: bold; /* Texte en gras */
+    text-transform: uppercase; /* Texte en majuscules */
+}
+
+.nav-links a.active {
+    background-color: blue;
+    border-radius: 5px;
+    padding: 5px 10px; /* Ajustez le padding pour le lien actif */
+}
+
+.monster-image {
     width: 100%;
+    overflow: hidden;
+}
+
+.monster-image img {
+    width: 100%;
+    height: auto;
+    display: block;
 }

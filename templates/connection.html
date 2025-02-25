@@ -4,24 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection - KONAMI</title>
     <link rel="stylesheet" href="/static/svg/styles.css">
-    <title>Konami</title>
 </head>
 <body>
     <header>
-        <h1>Konami- connection</h1>
-        <nav class="navbar">
-            <ul>
-                <li><a href="/" class="classe">connection</a></li>
+        <nav>
+            <div class="logo">
+                <img src="/static/img/konami.png" alt="KONAMI Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/carte">Cartes</a></li>
+                <li><a href="/deck">Deck</a></li>
+                <li><a href="/article">Article</a></li>
+                <li><a href="/about">À propos</a></li>
+                <li><a href="/connection" class="active">Connection</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <a href="/about" class="btn">about</a>
-    </main>
-    <footer>
-        <p>© World Wiki. Tous droits réservés.</p>
-    </footer>
+    <div class="monster-image">
+        <img src="/static/img/exodus.png" alt="Monstre">
+    </div>
+    <!-- Contenu spécifique à la page Connection -->
+    <script src="/assets/js/script.js"></script>
 </body>
 </html>
 {{end}}

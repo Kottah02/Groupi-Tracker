@@ -4,24 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartes - KONAMI</title>
     <link rel="stylesheet" href="/static/svg/styles.css">
-    <title>Konami</title>
 </head>
 <body>
     <header>
-        <h1>Konami- Carte</h1>
-        <nav class="navbar">
-            <ul>
-                <li><a href="/" class="classe">Carte</a></li>
+        <nav>
+            <div class="logo">
+                <img src="/static/img/konami.png" alt="KONAMI Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/carte" class="active">Cartes</a></li>
+                <li><a href="/deck">Deck</a></li>
+                <li><a href="/article">Article</a></li>
+                <li><a href="/about">À propos</a></li>
+                <li><a href="/connection">Connection</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <a href="/deck" class="btn">deck</a>
-    </main>
-    <footer>
-        <p>© World Wiki. Tous droits réservés.</p>
-    </footer>
+    <div class="monster-image">
+        <img src="/static/img/exodus.png" alt="Monstre">
+    </div>
+    {{range .Data}}
+        <p>{{.Name}} || {{.Type}}</p>
+        <img src="https://images.ygoprodeck.com/images/cards_small/{{.ID}}.jpg" alt="">
+    {{end}}
+    <!-- Contenu spécifique à la page Cartes -->
+    <script src="/assets/js/script.js"></script>
 </body>
 </html>
 {{end}}
