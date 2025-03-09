@@ -35,6 +35,23 @@
             font-size: 16px;
             cursor: pointer;
         }
+        .pagination {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+        }
+        .pagination button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .page-info {
+            font-size: 16px;
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
@@ -61,6 +78,13 @@
     <div class="search-container">
         <input type="text" id="searchBar" placeholder="Rechercher une carte par nom...">
         <button id="searchButton">Rechercher</button>
+    </div>
+
+    <!-- Boutons de pagination et affichage de la page -->
+    <div class="pagination">
+        <button id="prevPage">Précédent</button>
+        <span id="pageInfo" class="page-info">1/1</span>
+        <button id="nextPage">Suivant</button>
     </div>
 
     <!-- Conteneur pour les résultats de recherche -->
