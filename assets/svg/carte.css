@@ -1,97 +1,85 @@
-        /* Styles pour la page des cartes */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
+header {
+    background-color: #0a0a0a;
+    color: white;
+    padding: 10px 20px;
+}
 
-        .logo img {
-            height: 50px;
-        }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-        }
+.logo img {
+    height: 30px; /* Ajustez la hauteur du logo selon l'image */
+    width: auto;
+}
 
-        .nav-links li {
-            margin: 0 15px;
-        }
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    flex-grow: 1;
+}
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.nav-links li {
+    margin: 0 15px; /* Ajustez l'espacement entre les liens */
+}
 
-        .nav-links a.active {
-            color: #00a8ff;
-        }
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    font-size: 16px; /* Ajustez la taille de la police selon l'image */
+    font-weight: bold; /* Texte en gras */
+    text-transform: uppercase; /* Texte en majuscules */
+}
 
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 20px;
-        }
+.nav-links a.active {
+    background-color: blue;
+    border-radius: 5px;
+    padding: 5px 10px; /* Ajustez le padding pour le lien actif */
+}
 
-        .card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-        }
+.monster-image {
+    width: 100%;
+    overflow: hidden;
+}
 
-        .card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .card h3 {
-            margin: 10px 0;
-            font-size: 1.5em;
-        }
-
-        .card p {
-            margin: 5px 0;
-            font-size: 1em;
-            color: #555;
-        }
-
-        .card .type {
-            font-weight: bold;
-            color: #007bff;
-        }
-
-        .card .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 10px 0;
-        }
-
-        .card .stats p {
-            margin: 0;
-        }
-
-        .card .description {
-            font-size: 0.9em;
-            color: #777;
-            text-align: left;
-        }
+.monster-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.card-result {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+.card-result img {
+    max-width: 100px;
+    margin-right: 20px;
+}
+.card-info {
+    flex-grow: 1;
+}
+.search-container {
+    margin: 20px 0;
+}
+#searchBar {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+}

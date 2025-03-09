@@ -7,7 +7,34 @@
     <title>Cartes - KONAMI</title>
     <link rel="stylesheet" href="/static/svg/styles.css">
     <style>
-
+        .card-result {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .card-result img {
+            max-width: 100px;
+            margin-right: 20px;
+        }
+        .card-info {
+            flex-grow: 1;
+        }
+        .search-container {
+            margin: 20px 0;
+        }
+        #searchBar {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #searchButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -29,16 +56,18 @@
     <div class="monster-image">
         <img src="/static/img/exodus.png" alt="Monstre">
     </div>
-    {{range .Data}}
-    <img src="https://images.ygoprodeck.com/images/cards_small/{{.ID}}.jpg" alt="{{.Name}}">
-    <h3>{{.Name}}</h3>
-    <p class="type">{{.Type}}</p>
-    <div class="stats">
-        <p>ATK: {{.ATK}}</p>
-        <p>DEF: {{.DEF}}</p>
-    {{end}}
-    <!-- Contenu spécifique à la page Cartes -->
-    <script src="/assets/js/script.js"></script>
+
+    <!-- Barre de recherche et bouton -->
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Rechercher une carte par nom...">
+        <button id="searchButton">Rechercher</button>
+    </div>
+
+    <!-- Conteneur pour les résultats de recherche -->
+    <div id="results"></div>
+
+    <!-- Inclusion du fichier JavaScript externe -->
+    <script src="/static/js/script.js"></script>
 </body>
 </html>
 {{end}}
