@@ -1,0 +1,30 @@
+
+
+    <div class="card-container">
+        {{range .Data}}
+            <div class="card">
+                <img src="https://images.ygoprodeck.com/images/cards_small/{{.ID}}.jpg" alt="{{.Name}}">
+                <h3>{{.Name}}</h3>
+                <p class="type">{{.Type}}</p>
+                <div class="stats">
+                    <p>ATK: {{.ATK}}</p>
+                    <p>DEF: {{.DEF}}</p>
+                </div>
+                <p class="description">
+                    {{if eq .Type "Spell Card"}}
+                        <!-- Description pour les cartes Spell -->
+                        {{.Description}}
+                    {{else if eq .Type "Fusion Monster"}}
+                        <!-- Description pour les monstres Fusion -->
+                        {{.Description}}
+                    {{else}}
+                        <!-- Description par défaut pour les autres types de cartes -->
+                        {{.Description}}
+                    {{end}}
+                </p>
+            </div>
+        {{end}}
+    </div>
+</body>
+</html>
+{{end}}
