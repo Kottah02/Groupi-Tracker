@@ -11,7 +11,7 @@ func Init() {
 
 	acceuilRouter()
 	aboutRouter()
-	connectionRouter()
+	SetupConnectionRoutes()
 	carteRouter()
 	deckRouter()
 	articleRouter()

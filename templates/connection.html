@@ -26,7 +26,22 @@
     <div class="monster-image">
         <img src="/static/img/exodus.png" alt="Monstre">
     </div>
+
     <!-- Contenu spécifique à la page Connection -->
+    <div class="login-form">
+        {{if .Username}}
+            <h2>Bienvenue, {{.Username}} !</h2>
+            <p>Vous êtes déjà connecté.</p>
+        {{else}}
+            <h2>Connexion</h2>
+            <form action="/connection" method="post">
+                <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" name="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+            </form>
+        {{end}}
+    </div>
+
     <script src="/assets/js/script.js"></script>
 </body>
 </html>
