@@ -3,21 +3,15 @@ package controlers
 import (
 	"Groupietracker/templates"
 	"net/http"
-
-	"github.com/gorilla/sessions"
 )
 
-var store = sessions.NewCookieStore([]byte("secret-key"))
-
 func ConnectionControler(w http.ResponseWriter, r *http.Request) {
-	session, _ := store.Get(r, "session-name")
+	session, _ := Store.Get(r, "session-name")
 
 	// Vérifier si l'utilisateur est déjà connecté
-	if username, ok := session.Values["username"].(string); ok {
-		data := map[string]string{
-			"Username": username,
-		}
-		templates.ListTemp.ExecuteTemplate(w, "connection", data)
+	if _, ok := session.Values["username"].(string); ok {
+		// Rediriger vers la page profil
+		http.Redirect(w, r, "/profil", http.StatusSeeOther)
 		return
 	}
 
@@ -31,12 +25,15 @@ func ConnectionControler(w http.ResponseWriter, r *http.Request) {
 			session.Values["username"] = username
 			session.Save(r, w)
 
-			// Rediriger pour éviter la resoumission du formulaire
-			http.Redirect(w, r, "/connection", http.StatusSeeOther)
+			// Rediriger vers la page profil
+			http.Redirect(w, r, "/profil", http.StatusSeeOther)
 			return
 		}
 	}
 
 	// Afficher la page de connexion
-	templates.ListTemp.ExecuteTemplate(w, "connection", nil)
+	data := map[string]interface{}{
+		"IsLoggedIn": false, // L'utilisateur n'est pas connecté
+	}
+	templates.ListTemp.ExecuteTemplate(w, "connection", data)
 }

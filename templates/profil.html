@@ -1,0 +1,44 @@
+{{define "profil"}}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - KONAMI</title>
+    <link rel="stylesheet" href="/static/svg/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="/static/img/konami.png" alt="KONAMI Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/carte">Cartes</a></li>
+                <li><a href="/deck">Deck</a></li>
+                <li><a href="/article">Article</a></li>
+                <li><a href="/about">À propos</a></li>
+                <li><a href="/profil" class="active">Profil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="monster-image">
+        <img src="/static/img/exodus.png" alt="Monstre">
+    </div>
+
+    <!-- Contenu spécifique à la page Profil -->
+    <div class="profile-content">
+        <h2>Profil de {{.Username}}</h2>
+        <p>Bienvenue sur votre page profil !</p>
+
+        <!-- Bouton de déconnexion -->
+        <form action="/logout" method="post">
+            <button type="submit">Se déconnecter</button>
+        </form>
+    </div>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>
+{{end}}
