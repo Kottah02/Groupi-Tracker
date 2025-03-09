@@ -42,6 +42,15 @@
                     <img src="https://images.ygoprodeck.com/images/cards_small/89631139.jpg" alt="Blue-Eyes White Dragon">
                 </div>
                 <div class="carousel-item">
+                    <img src="https://images.ygoprodeck.com/images/cards_small/99991455.jpg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.ygoprodeck.com/images/cards/99940363.jpg">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.ygoprodeck.com/images/cards/99937842.jpg">
+                </div>
+                <div class="carousel-item">
                     <img src="https://images.ygoprodeck.com/images/cards_small/74677422.jpg" alt="Red-Eyes Black Dragon">
                 </div>
                 <div class="carousel-item">
@@ -60,14 +69,14 @@
         // Fonction pour faire défiler le carrousel vers la gauche
         function prevSlide() {
             const carouselInner = document.getElementById('carousel-inner');
-            currentIndex = (currentIndex - 1 + 4) % 4; // 4 est le nombre d'images dans le carrousel
+            currentIndex = (currentIndex - 1 + 7) % 7; // 4 est le nombre d'images dans le carrousel
             carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
         // Fonction pour faire défiler le carrousel vers la droite
         function nextSlide() {
             const carouselInner = document.getElementById('carousel-inner');
-            currentIndex = (currentIndex + 1) % 4; // 4 est le nombre d'images dans le carrousel
+            currentIndex = (currentIndex + 1) % 7; // 4 est le nombre d'images dans le carrousel
             carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
     </script>
