@@ -24,6 +24,9 @@
         }
         .search-container {
             margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
         #searchBar {
             width: 300px;
@@ -34,6 +37,10 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+        }
+        #attributeFilter, #typeFilter, #levelFilter {
+            padding: 10px;
+            font-size: 16px;
         }
         .pagination {
             margin-top: 20px;
@@ -74,9 +81,56 @@
         <img src="/static/img/exodus.png" alt="Monstre">
     </div>
 
-    <!-- Barre de recherche et bouton -->
+    <!-- Barre de recherche, filtres d'attribut, de type et de niveau, et bouton -->
     <div class="search-container">
         <input type="text" id="searchBar" placeholder="Rechercher une carte par nom...">
+        <select id="attributeFilter">
+            <option value="">Select Attribute</option>
+            <option value="DARK">TÉNÈBRES</option>
+            <option value="DIVINE">DIVIN</option>
+            <option value="EARTH">TERRE</option>
+            <option value="FIRE">FEU</option>
+            <option value="LIGHT">LUMIÈRE</option>
+            <option value="WATER">EAU</option>
+            <option value="WIND">VENT</option>
+        </select>
+        <select id="typeFilter">
+            <option value="">Select Type</option>
+            <option value="Effect Monster">Effect Monster</option>
+            <option value="Flip Effect Monster">Flip Effect Monster</option>
+            <option value="Fusion Monster">Fusion Monster</option>
+            <option value="Gemini Monster">Gemini Monster</option>
+            <option value="Link Monster">Link Monster</option>
+            <option value="Normal Monster">Normal Monster</option>
+            <option value="Normal Tuner Monster">Normal Tuner Monster</option>
+            <option value="Pendulum Effect Fusion Monster">Pendulum Effect Fusion Monster</option>
+            <option value="Pendulum Effect Monster">Pendulum Effect Monster</option>
+            <option value="Pendulum Effect Ritual Monster">Pendulum Effect Ritual Monster</option>
+            <option value="Pendulum Flip Effect Monster">Pendulum Flip Effect Monster</option>
+            <option value="Pendulum Normal Monster">Pendulum Normal Monster</option>
+            <option value="Pendulum Tuner Effect Monster">Pendulum Tuner Effect Monster</option>
+            <option value="Ritual Effect Monster">Ritual Effect Monster</option>
+            <option value="Ritual Monster">Ritual Monster</option>
+            <option value="Skill Card">Skill Card</option>
+            <option value="Spell Card">Spell Card</option>
+            <option value="Spirit Monster">Spirit Monster</option>
+            <option value="Synchro Monster">Synchro Monster</option>
+        </select>
+        <select id="levelFilter">
+            <option value="">Select Level</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
         <button id="searchButton">Rechercher</button>
     </div>
 

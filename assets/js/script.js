@@ -2,9 +2,14 @@ let allCards = []; // Stocke toutes les cartes récupérées
 let currentPage = 0; // Page actuelle
 const cardsPerPage = 20; // Nombre de cartes par page
 
-// Fonction pour charger les cartes en fonction du fragment de nom
-function loadCards(searchTerm) {
-    const url = `https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=${encodeURIComponent(searchTerm)}`;
+// Fonction pour charger les cartes en fonction du fragment de nom, de l'attribut, du type et du niveau
+function loadCards(searchTerm, attribute, type, level) {
+    let url = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
+
+    // Si un terme de recherche est fourni, l'ajouter à l'URL
+    if (searchTerm) {
+        url += `?fname=${encodeURIComponent(searchTerm)}`;
+    }
 
     fetch(url)
         .then(response => {
@@ -15,6 +20,22 @@ function loadCards(searchTerm) {
         })
         .then(data => {
             allCards = data.data || []; // Stocker toutes les cartes
+
+            // Filtrer les cartes par attribut si un attribut est sélectionné
+            if (attribute) {
+                allCards = allCards.filter(card => card.attribute === attribute);
+            }
+
+            // Filtrer les cartes par type si un type est sélectionné
+            if (type) {
+                allCards = allCards.filter(card => card.type === type);
+            }
+
+            // Filtrer les cartes par niveau si un niveau est sélectionné
+            if (level) {
+                allCards = allCards.filter(card => card.level == level); // Utilisez == pour la comparaison (niveau est un nombre)
+            }
+
             currentPage = 0; // Réinitialiser la page à 0
             displayCards(); // Afficher les cartes de la première page
             updatePageInfo(); // Mettre à jour l'affichage du numéro de page
@@ -48,6 +69,7 @@ function displayCards() {
                     <h3>${card.name}</h3>
                     <p class="type"><strong>Type :</strong> ${card.type}</p>
                     ${card.attribute ? `<p class="attribute"><strong>Attribut :</strong> ${card.attribute}</p>` : ''}
+                    ${card.level ? `<p class="level"><strong>Niveau :</strong> ${card.level}</p>` : ''}
                     <div class="stats">
                         ${card.atk ? `<p><strong>ATK :</strong> ${card.atk}</p>` : ''}
                         ${card.def ? `<p><strong>DEF :</strong> ${card.def}</p>` : ''}
@@ -80,13 +102,11 @@ function updatePageInfo() {
 // Fonction pour gérer la recherche
 function searchCard() {
     const searchTerm = document.getElementById('searchBar').value.trim();
+    const attribute = document.getElementById('attributeFilter').value;
+    const type = document.getElementById('typeFilter').value;
+    const level = document.getElementById('levelFilter').value;
 
-    if (searchTerm === "") {
-        document.getElementById('results').innerHTML = '<p>Veuillez entrer un nom de carte.</p>';
-        return;
-    }
-
-    loadCards(searchTerm);
+    loadCards(searchTerm, attribute, type, level);
 }
 
 // Gestion des boutons de pagination
