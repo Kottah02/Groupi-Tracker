@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #0a0a0a;
+    color: white;
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 30px; /* Ajustez la hauteur du logo selon l'image */
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.nav-links li {
+    margin: 0 15px; /* Ajustez l'espacement entre les liens */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    font-size: 16px; /* Ajustez la taille de la police selon l'image */
+    font-weight: bold; /* Texte en gras */
+    text-transform: uppercase; /* Texte en majuscules */
+}
+
+.nav-links a.active {
+    background-color: blue;
+    border-radius: 5px;
+    padding: 5px 10px; /* Ajustez le padding pour le lien actif */
+}
+
+.monster-image {
+    width: 100%;
+    overflow: hidden;
+}
+
+.monster-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carousel {
+    flex: 1;
+    max-width: 245px;
+    overflow: hidden;
+    position: relative;
+    margin-left: auto;
+    margin-right: 30px; /* Décale un peu à droite */
+    margin-top: 40px; /* Ajuste la valeur selon ton besoin */
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
