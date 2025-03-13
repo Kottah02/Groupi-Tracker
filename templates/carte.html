@@ -82,19 +82,19 @@
     </div>
 
     <!-- Barre de recherche, filtres d'attribut, de type et de niveau, et bouton -->
-    <div class="search-container">
-        <input type="text" id="searchBar" placeholder="Rechercher une carte par nom...">
-        <select id="attributeFilter">
+    <form class="search-container" action="/carte" method="get">
+        <input type="text" id="searchBar" name="query" placeholder="Rechercher une carte par nom..." >
+        <select id="attributeFilter" name="attribute">
             <option value="">Select Attribute</option>
-            <option value="DARK">TÉNÈBRES</option>
-            <option value="DIVINE">DIVIN</option>
-            <option value="EARTH">TERRE</option>
-            <option value="FIRE">FEU</option>
-            <option value="LIGHT">LUMIÈRE</option>
-            <option value="WATER">EAU</option>
-            <option value="WIND">VENT</option>
+            <option value="DARK">DARK</option>
+            <option value="DIVINE">DIVINE</option>
+            <option value="EARTH">EARTH</option>
+            <option value="FIRE">FIRE</option>
+            <option value="LIGHT">LIGHT</option>
+            <option value="WATER">WATER</option>
+            <option value="WIND">WIND</option>
         </select>
-        <select id="typeFilter">
+        <select id="typeFilter" name="type" >
             <option value="">Select Type</option>
             <option value="Effect Monster">Effect Monster</option>
             <option value="Flip Effect Monster">Flip Effect Monster</option>
@@ -116,7 +116,7 @@
             <option value="Spirit Monster">Spirit Monster</option>
             <option value="Synchro Monster">Synchro Monster</option>
         </select>
-        <select id="levelFilter">
+        <select id="levelFilter" name="level">
             <option value="">Select Level</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -131,8 +131,8 @@
             <option value="11">11</option>
             <option value="12">12</option>
         </select>
-        <button id="searchButton">Rechercher</button>
-    </div>
+        <button id="searchButton" type="submit">Rechercher</button>
+    </form>
 
     <!-- Boutons de pagination et affichage de la page -->
     <div class="pagination">
@@ -142,10 +142,10 @@
     </div>
 
     <!-- Conteneur pour les résultats de recherche -->
-    <div id="results"></div>
-
-    <!-- Inclusion du fichier JavaScript externe -->
-    <script src="/static/js/script.js"></script>
+    <div id="results">
+        {{range .}}
+        <p>{{.ID}} || {{.Name}} || {{.Attribute}} || {{.Type}} || {{.Level}}</p>
+        {{end}}
 </body>
 </html>
 {{end}}

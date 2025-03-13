@@ -8,13 +8,14 @@ import (
 )
 
 type YugiohCard struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Type  string `json:"type"`
-	Level int    `json:"level"`
-	ATK   int    `json:"atk"`
-	DEF   int    `json:"def"`
-	Race  string `json:"race"`
+	ID        int    `json:"id"`
+	Name      string `json:"name"`
+	Type      string `json:"type"`
+	Level     int    `json:"level"`
+	ATK       int    `json:"atk"`
+	DEF       int    `json:"def"`
+	Race      string `json:"race"`
+	Attribute string `json:"attribute"`
 }
 
 type YugiohResponse struct {
