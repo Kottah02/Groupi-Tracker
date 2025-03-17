@@ -8,19 +8,39 @@
     <link rel="stylesheet" href="/static/svg/styles.css">
     <style>
         .card-result {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
             display: flex;
             align-items: center;
+            background: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            margin: 15px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card-result:hover {
+            transform: scale(1.02);
         }
         .card-result img {
-            max-width: 100px;
-            margin-right: 20px;
+            max-width: 120px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 15px;
         }
         .card-info {
             flex-grow: 1;
+            font-family: Arial, sans-serif;
+        }
+        .card-info p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .ATK, .ATK {
+            color: rgb(255, 0, 0);
+            font-weight: bold;
+        }
+        .DEF, .DEF {
+            color: blue;
+            font-weight: bold;
         }
         .search-container {
             margin: 20px 0;
@@ -28,36 +48,47 @@
             gap: 10px;
             align-items: center;
         }
-        #searchBar {
-            width: 300px;
+        #searchBar, #attributeFilter, #typeFilter, #levelFilter {
             padding: 10px;
             font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
         #searchButton {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            background: #e60012;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
         }
-        #attributeFilter, #typeFilter, #levelFilter {
-            padding: 10px;
-            font-size: 16px;
+        #searchButton:hover {
+            background: #c40010;
         }
         .pagination {
-            margin-top: 20px;
-            margin-bottom: 20px;
             display: flex;
             justify-content: center;
             gap: 10px;
             align-items: center;
+            margin: 20px 0;
         }
         .pagination button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            background: #e60012;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .pagination button:hover {
+            background: #c40010;
         }
         .page-info {
             font-size: 16px;
-            margin: 0 10px;
         }
     </style>
 </head>
@@ -81,9 +112,8 @@
         <img src="/static/img/exodus.png" alt="Monstre">
     </div>
 
-    <!-- Barre de recherche, filtres d'attribut, de type et de niveau, et bouton -->
     <form class="search-container" action="/carte" method="get">
-        <input type="text" id="searchBar" name="query" placeholder="Rechercher une carte par nom..." >
+        <input type="text" id="searchBar" name="query" placeholder="Rechercher une carte par nom...">
         <select id="attributeFilter" name="attribute">
             <option value="">Select Attribute</option>
             <option value="DARK">DARK</option>
@@ -94,26 +124,10 @@
             <option value="WATER">WATER</option>
             <option value="WIND">WIND</option>
         </select>
-        <select id="typeFilter" name="type" >
+        <select id="typeFilter" name="type">
             <option value="">Select Type</option>
             <option value="Effect Monster">Effect Monster</option>
-            <option value="Flip Effect Monster">Flip Effect Monster</option>
             <option value="Fusion Monster">Fusion Monster</option>
-            <option value="Gemini Monster">Gemini Monster</option>
-            <option value="Link Monster">Link Monster</option>
-            <option value="Normal Monster">Normal Monster</option>
-            <option value="Normal Tuner Monster">Normal Tuner Monster</option>
-            <option value="Pendulum Effect Fusion Monster">Pendulum Effect Fusion Monster</option>
-            <option value="Pendulum Effect Monster">Pendulum Effect Monster</option>
-            <option value="Pendulum Effect Ritual Monster">Pendulum Effect Ritual Monster</option>
-            <option value="Pendulum Flip Effect Monster">Pendulum Flip Effect Monster</option>
-            <option value="Pendulum Normal Monster">Pendulum Normal Monster</option>
-            <option value="Pendulum Tuner Effect Monster">Pendulum Tuner Effect Monster</option>
-            <option value="Ritual Effect Monster">Ritual Effect Monster</option>
-            <option value="Ritual Monster">Ritual Monster</option>
-            <option value="Skill Card">Skill Card</option>
-            <option value="Spell Card">Spell Card</option>
-            <option value="Spirit Monster">Spirit Monster</option>
             <option value="Synchro Monster">Synchro Monster</option>
         </select>
         <select id="levelFilter" name="level">
@@ -123,29 +137,34 @@
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
         </select>
         <button id="searchButton" type="submit">Rechercher</button>
     </form>
 
-    <!-- Boutons de pagination et affichage de la page -->
     <div class="pagination">
         <button id="prevPage">Précédent</button>
         <span id="pageInfo" class="page-info">1/1</span>
         <button id="nextPage">Suivant</button>
     </div>
 
-    <!-- Conteneur pour les résultats de recherche -->
     <div id="results">
         {{range .}}
-        <p>{{.ID}} || {{.Name}} || {{.Attribute}} || {{.Type}} || {{.Level}}</p>
+        <div class="card-result">
+            {{if .Images}}
+            <img src="{{(index .Images 0).Url}}" alt="{{.Name}}">
+            {{end}}
+            <div class="card-info">
+                <p><strong>Nom:</strong> {{.Name}}</p>
+                <p><strong>Niveau:</strong> <span class="level">{{.Level}}</span></p>
+                <p><strong>ATK:</strong> <span class="level">{{.ATK}}</span></p>
+                <p><strong>DEF:</strong> <span class="level">{{.DEF}}</span></p>
+                <p><strong>Attribut:</strong> <span class="attribute">{{.Attribute}}</span></p>
+                <p><strong>Type:</strong> {{.Type}}</p>
+
+            </div>
+        </div>
         {{end}}
+    </div>
 </body>
 </html>
 {{end}}

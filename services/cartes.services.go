@@ -16,6 +16,9 @@ type YugiohCard struct {
 	DEF       int    `json:"def"`
 	Race      string `json:"race"`
 	Attribute string `json:"attribute"`
+	Images    []struct {
+		Url string `json:"image_url_small"`
+	} `json:"card_images"`
 }
 
 type YugiohResponse struct {
